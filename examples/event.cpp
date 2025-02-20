@@ -4,7 +4,7 @@ using namespace coro;
 
 #define CONTEXTNUM 5
 
-event ev;
+event<> ev;
 
 task<void> set_task()
 {
