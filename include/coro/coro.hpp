@@ -10,4 +10,5 @@
 #include "coro/log.hpp"
 #include "coro/net/tcp.hpp"
 #include "coro/scheduler.hpp"
+#include "coro/timer.hpp"
 #include "coro/utils.hpp"
