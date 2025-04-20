@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./resource/tinycoro.png" alt="tinycoro Logo" height="200">
+  <img src="./resource/tinycoro_show.jpg" alt="tinycoro Logo" height="200">
 </p>
 
 -----------------
@@ -17,7 +17,7 @@
 > **⚠️查看旧版本请切换分支**
 > **⭐项目制作不易，请点击star支持一下❤️**
 
-> **🔥tinyCoroLab的更新会持续进行，并致力于打造对标工业级标准的代码质量和性能，我也诚挚的邀请您与我共同建设该课程🚀**
+> **🔥tinyCoroLab的更新会持续进行，并致力于打造对标工业标准的代码质量和性能，欢迎您与我共同建设tinyCoroLab💪**
 
 ## tinyCoro介绍
 
