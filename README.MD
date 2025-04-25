@@ -78,6 +78,11 @@ tinyCoroLab实验的进行需要搭配文档，如果你想体验类似cmu15445�
 
 ## tinyCoroLab实验必读
 
+### 实验依赖工具安装
+
+- **python version >= 3.7:** 部分测试脚本需要依赖python执行，请确保本地命令行运行python或者python3不会报错
+- **valgrind version >= 3.18.1:** 部分读者反映内存测试出错是因为valgrind版本过旧，3.18.1为作者测试的一个可以正常运行的版本，如果读者本地内存测试出错可以尝试更新到该版本
+
 ### tinyCoroLab实验环境搭建
 
 由于[tinyCoroLab](https://github.com/sakurs2/tinyCoroLab)使用了只在linux下支持的liburing，因此用户需要准备linux系统环境并使用尽量新的内核，wsl以及虚拟机均可，并预先安装好cmake以及支持C++20标准的gcc编译器。
