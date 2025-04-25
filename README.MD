@@ -80,8 +80,8 @@ tinyCoroLab实验的进行需要搭配文档，如果你想体验类似cmu15445�
 
 ### 实验依赖工具安装
 
-- **python version >= 3.7:** 部分测试脚本需要依赖python执行，请确保本地命令行运行python或者python3不会报错
-- **valgrind version >= 3.18.1:** 部分读者反映内存测试出错是因为valgrind版本过旧，3.18.1为作者测试的一个可以正常运行的版本，如果读者本地内存测试出错可以尝试更新到该版本
+- **python version >= 3.7:** 部分测试脚本需要依赖 python 执行，请确保本地命令行运行 python 或者 python3 不会报错
+- **valgrind version >= 3.18.1:** 部分读者反映内存测试出错是因为 valgrind 版本过旧，3.18.1 为作者测试的一个可以正常运行的版本，如果读者本地内存测试出错可以尝试更新到该版本
 
 ### tinyCoroLab实验环境搭建
 
