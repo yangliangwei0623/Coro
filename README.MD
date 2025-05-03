@@ -118,7 +118,7 @@ sudo make install;
 mkdir build
 cd build
 cmake ..
-make
+make -j$(nproc)
 ```
 
 编译成功后即表示[tinyCoroLab](https://github.com/sakurs2/tinyCoroLab)的环境正式搭建完毕。

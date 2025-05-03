@@ -157,6 +157,14 @@ public:
      */
     inline auto get_id() noexcept -> uint32_t { return m_id; }
 
+    /**
+     * @brief Get the uring object owned by engine, so the outside can use
+     * some function of uring
+     *
+     * @return uring_proxy&
+     */
+    inline auto get_uring() noexcept -> uring_proxy& { return m_upxy; }
+
     // TODO[lab2a]: Add more function if you need
 
 private:
