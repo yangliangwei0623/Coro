@@ -1,5 +1,5 @@
 #include "coro/engine.hpp"
-#include "coro/net/io_info.hpp"
+#include "coro/io/io_info.hpp"
 #include "coro/task.hpp"
 
 namespace coro::detail
@@ -57,7 +57,7 @@ auto engine::exec_one_task() noexcept -> void
 
 auto engine::handle_cqe_entry(urcptr cqe) noexcept -> void
 {
-    auto data = reinterpret_cast<net::detail::io_info*>(io_uring_cqe_get_data(cqe));
+    auto data = reinterpret_cast<io::detail::io_info*>(io_uring_cqe_get_data(cqe));
     data->cb(data, cqe->res);
 }
 

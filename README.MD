@@ -4,10 +4,10 @@
 
 -----------------
 
-# tinyCoroLab Course
+# 🚀tinyCoroLab Course
 
 [![C++20](https://img.shields.io/badge/dialect-C%2B%2B20-blue)](https://en.cppreference.com/w/cpp/20)[![MIT license](https://img.shields.io/github/license/max0x7ba/atomic_queue)](https://github.com/sakurs2/tinyCoro/blob/master/LICENSE)![platform Linux x86_64](https://img.shields.io/badge/platform-Linux%20x86_64--bit-yellow)
-![Version Badge](https://img.shields.io/badge/version-v1%2E1-red)
+![Version Badge](https://img.shields.io/badge/version-v1%2E2-red)
 <!-- support below -->
 <!-- [![Build Status](link/actions/workflows/cmake.yml/badge.svg)](link/actions/workflows/cmake.yml) -->
 <!-- [![CI](https://github.com/jbaldwin/libcoro/actions/workflows/ci-coverage.yml/badge.svg)](https://github.com/jbaldwin/libcoro/actions/workflows/ci-coverage.yml)
@@ -196,6 +196,12 @@ $ tree -d -A -I third_party -I build -I .vscode -I resource -I temp
 #### [scripts](https://github.com/sakurs2/tinyCoroLab/tree/master/scripts) & [tests](https://github.com/sakurs2/tinyCoroLab/tree/master/tests) & [benchtests](https://github.com/sakurs2/tinyCoroLab/tree/master/benchtests) & [benchmark](https://github.com/sakurs2/tinyCoroLab/tree/master/benchmark)
 
 这四个文件夹存储了[tinyCoroLab](https://github.com/sakurs2/tinyCoroLab)用于执行功能测试、内存安全测试、性能测试和实验辅助脚本的文件，具体使用方法后续会详细介绍。
+
+### CI流水线
+
+tinyCoroLab默认配置了一条基于ubuntu系统的CI流水线，主要执行编译构建以及各项测试的流程，具体文件可见[.github/workflows/ci-ubuntu.yml](https://github.com/sakurs2/tinyCoroLab/tree/master/.github/workflows/ci-ubuntu.yml)。
+
+该CI流水线强制执行编译构建过程，对于各项测试根据用户配置文件选择性执行，用户可编辑[scripts/CITests.yml](https://github.com/sakurs2/tinyCoroLab/tree/master/scripts/CITests.yml)来控制某项测试是否被执行。
 
 ### tinyCoroLab实验小技巧
 

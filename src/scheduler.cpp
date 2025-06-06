@@ -14,6 +14,12 @@ auto scheduler::init_impl(size_t ctx_cnt) noexcept -> void
         m_ctxs.emplace_back(std::make_unique<context>());
     }
     m_dispatcher.init(m_ctx_cnt, &m_ctxs);
+
+#ifdef ENABLE_MEMORY_ALLOC
+    coro::allocator::memory::mem_alloc_config config;
+    m_mem_alloc.init(config);
+    ginfo.mem_alloc = &m_mem_alloc;
+#endif
 }
 
 auto scheduler::loop_impl() noexcept -> void

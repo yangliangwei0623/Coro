@@ -11,7 +11,9 @@
 #pragma once
 
 #include <array>
+#include <ranges>
 #include <tuple>
+#include <vector>
 
 #include "coro/attribute.hpp"
 #include "coro/comp/latch.hpp"
@@ -39,7 +41,7 @@ namespace detail
 // TODO[lab5a]: Add code that you don't want to use externally in namespace detail
 }; // namespace detail
 
-// Just make compile success
+// @warning: make compile success, don't use it
 template<typename return_type>
 struct awaiter : public detail::noop_awaiter
 {
@@ -49,6 +51,12 @@ struct awaiter : public detail::noop_awaiter
 template<>
 struct awaiter<void> : detail::noop_awaiter
 {
+};
+
+template<>
+struct awaiter<std::vector<int>> : public detail::noop_awaiter
+{
+    auto await_resume() -> std::vector<int> { return {}; }
 };
 
 template<concepts::awaitable... awaitables_type>
@@ -61,4 +69,12 @@ template<concepts::awaitable... awaitables_type>
     return {};
 }
 
+// TODO[lab5a] : You can change template parameters if you need
+template<std::ranges::range range_type>
+[[CORO_TEST_USED(lab5a)]] [[CORO_AWAIT_HINT]] static auto when_all(range_type&& awaitables) -> awaiter<std::vector<int>>
+{
+    // TODO[lab5a] : Add codes if you need,
+    // change return type to awaiter implemented by you
+    return {};
+}
 }; // namespace coro

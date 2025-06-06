@@ -6,6 +6,9 @@
 #include <vector>
 
 #include "config.h"
+#ifdef ENABLE_MEMORY_ALLOC
+    #include "coro/allocator/memory.hpp"
+#endif
 #include "coro/dispatcher.hpp"
 
 namespace coro
@@ -73,6 +76,11 @@ private:
     detail::ctx_container                               m_ctxs;
     detail::dispatcher<coro::config::kDispatchStrategy> m_dispatcher;
     // TODO[lab2b]: Add more member variables if you need
+
+#ifdef ENABLE_MEMORY_ALLOC
+    // Memory Allocator
+    coro::allocator::memory::memory_allocator<coro::config::kMemoryAllocator> m_mem_alloc;
+#endif
 };
 
 inline void submit_to_scheduler(task<void>&& task) noexcept
