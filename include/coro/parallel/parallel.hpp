@@ -55,7 +55,7 @@ template<typename func_type>
 requires(coro::concepts::function_traits<func_type>::arity == 1) auto make_parallel_reduce_func(func_type func)
 {
     using std_func_type = std::function<typename coro::concepts::function_traits<func_type>::return_type(
-        typename coro::concepts::function_traits<func_type>::args<0>::type)>;
+        typename coro::concepts::function_traits<func_type>::template args<0>::type)>;
     return std_func_type(func);
 }
 
