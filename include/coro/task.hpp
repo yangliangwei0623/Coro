@@ -50,13 +50,27 @@ struct promise_base
 
     constexpr auto initial_suspend() noexcept { return std::suspend_always{}; }
 
-    [[CORO_TEST_USED(lab1)]] auto final_suspend() noexcept -> std::suspend_always
+    struct final_awaiter
     {
-        // TODO[lab1]: Add you codes
-        // Return suspend_always is incorrect,
-        // so you should modify the return type and define new awaiter to return
-        return {};
+        std::coroutine_handle<> continuation;
+
+        auto await_ready() const noexcept -> bool { return false; }
+
+        auto await_suspend(std::coroutine_handle<>) const noexcept -> std::coroutine_handle<>
+        {
+            return continuation ? continuation : std::noop_coroutine();
+        }
+
+        auto await_resume() const noexcept -> void {}
+    };
+
+    [[CORO_TEST_USED(lab1)]] auto final_suspend() noexcept -> final_awaiter
+    {
+        return {m_continuation};
     }
+
+    std::coroutine_handle<> m_continuation{nullptr};
+    bool m_detached{false};
 
 #ifdef ENABLE_MEMORY_ALLOC
     void* operator new(std::size_t size)
@@ -168,7 +182,7 @@ public:
 
         auto await_suspend(std::coroutine_handle<> awaiting_coroutine) noexcept -> std::coroutine_handle<>
         {
-            // TODO[lab1]: Add you codes
+            m_coroutine.promise().m_continuation = awaiting_coroutine;
             return m_coroutine;
         }
 
@@ -234,7 +248,11 @@ public:
 
     [[CORO_TEST_USED(lab1)]] auto detach() -> void
     {
-        // TODO[lab1]: Add you codes
+        if (m_coroutine != nullptr)
+        {
+            m_coroutine.promise().m_detached = true;
+            m_coroutine = nullptr;
+        }
     }
 
     auto operator co_await() const& noexcept
@@ -277,7 +295,10 @@ using coroutine_handle = std::coroutine_handle<detail::promise_base>;
  */
 [[CORO_TEST_USED(lab1)]] inline auto clean(std::coroutine_handle<> handle) noexcept -> void
 {
-    // TODO[lab1]: Add you codes
+    if (handle && coroutine_handle::from_address(handle.address()).promise().m_detached)
+    {
+        handle.destroy();
+    }
 }
 
 namespace detail
